@@ -1,110 +1,360 @@
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PathFinder AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ✅ Particles CDN -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:#111827;
+    overflow-x:hidden;
+    background:
+    radial-gradient(circle at 20% 30%, #e0f2fe 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #ede9fe 0%, transparent 40%);
+}
+
+/* ✅ PARTICLES BACKGROUND */
+#particles-js{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+/* Keep content above particles */
+.hero, .section{
+    position:relative;
+    z-index:1;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.navbar{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    animation:fadeDown 1s ease forwards;
+}
+
+.logo img{
+    height:250px;
+    animation:logoFloat 4s ease-in-out infinite;
+    transition:all 0.4s ease;
+    filter:drop-shadow(0 0 20px rgba(79,70,229,0.4));
+}
+
+@keyframes logoFloat{
+    0%,100%{ transform:translateY(0px); }
+    50%{ transform:translateY(-20px); }
+}
+
+.nav-links a{
+    text-decoration:none;
+    margin-left:60px;
+    color:#374151;
+    font-weight:500;
+    font-size:22px;
+    display:inline-block;
+    position:relative;
+    transition:all 0.3s ease;
+}
+
+.nav-links a:hover{
+    color:#4f46e5;
+    transform:scale(1.15);
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:3px;
+    background:#4f46e5;
+    transition:width 0.3s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ---------------- HERO CONTENT ---------------- */
+
+.hero-content{
+    padding-top:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:3.5rem;
+    font-weight:700;
+    max-width:800px;
+    line-height:1.2;
+    background:linear-gradient(90deg,#4f46e5,#9333ea,#06b6d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:gradientMove 5s linear infinite, fadeDown 1s ease forwards;
+}
+
+@keyframes gradientMove{
+    0%{ background-position:0% center; }
+    100%{ background-position:200% center; }
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:1.5rem;
+    max-width:600px;
+    color:#4b5563;
+    animation:fadeUp 1.2s ease forwards;
+}
+
+.hero button{
+    position:relative;
+    margin-top:40px;
+    padding:26px 50px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    color:white;
+    font-size:1.3rem;
+    font-weight:600;
+    cursor:pointer;
+    overflow:hidden;
+    transition:all 0.3s ease;
+    box-shadow:0 10px 30px rgba(79,70,229,0.4);
+}
+
+.hero button::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50px;
+    background:linear-gradient(135deg,#06b6d4,#9333ea);
+    opacity:0;
+    transition:0.4s;
+    z-index:-1;
+}
+
+.hero button:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 20px 50px rgba(147,51,234,0.6);
+}
+
+.hero button:hover::before{
+    opacity:1;
+    filter:blur(20px);
+}
+
+/* ---------------- STUDENTS IMAGE ---------------- */
+
+.students-img{
+    margin-top:60px;
+    animation:fadeUp 2s ease forwards;
+}
+
+.students-img img{
+    width:700px;
+    max-width:90%;
+    animation:floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+    0%,100%{ transform:translateY(0px); }
+    50%{ transform:translateY(-25px); }
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.section{
+    padding:120px 8%;
+    text-align:center;
+}
+
+.section h2{
+    font-size:3rem;
+    font-weight:200;
+    margin-bottom:20px;
+}
+
+.section p{
+    max-width:700px;
+    margin:0 auto;
+    color:#4b5563;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes rippleEffect{
+    to{
+        transform:scale(15);
+        opacity:0;
+    }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width:768px){
+    .hero h1{ font-size:2.2rem; }
+    .nav-links a{ font-size:16px; margin-left:20px; }
+    .logo img{ height:120px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✅ PARTICLES BACKGROUND -->
+<div id="particles-js"></div>
+
+<section class="hero">
+
+<div class="navbar">
+    <div class="logo">
+        <img src="AILOGO.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+</div>
+
+<div class="hero-content">
+    <h1>
+        Discover Your Ideal Career Path with Intelligent AI Guidance
+    </h1>
+<br></br>
+    <p>
+        PathFinder AI evaluates personality, interests, and strengths to guide students toward confident career choices.
+    </p>
+    <br>
+
+    <button>Start Career Analysis</button>
+
+    <div class="students-img">
+        <img src="students.png" alt="Students">
+    </div>
+</div>
+
+</section>
+
+<section class="section" id="features">
+<h2>Powerful Features</h2>
+<p>AI-driven personality assessment, visual analytics, and structured career roadmaps designed to guide students toward meaningful professional growth.</p>
+</section>
+
+<section class="section" id="how">
+<h2>How It Works</h2>
+<p>Take a scientifically designed assessment. Our AI evaluates your responses and provides tailored career recommendations within minutes.</p>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact Us</h2>
+<p>Have questions or feedback? Reach out to our team and we will assist you promptly.</p>
+</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
+/* ✅ Ripple Effect */
 const button = document.querySelector(".hero button");
 
-/* -----------------------------
-BUTTON CLICK
------------------------------ */
-
-if(button){
-
-button.addEventListener("click", async function(e){
-
-/* Ripple Animation */
-
-let ripple = document.createElement("span");
-ripple.style.position="absolute";
-ripple.style.width=ripple.style.height="20px";
-ripple.style.background="rgba(255,255,255,0.6)";
-ripple.style.borderRadius="50%";
-ripple.style.transform="scale(0)";
-ripple.style.left=e.offsetX+"px";
-ripple.style.top=e.offsetY+"px";
-ripple.style.animation="rippleEffect 0.6s linear";
-
-this.appendChild(ripple);
-setTimeout(()=>ripple.remove(),600);
-
-
-/* API CALL */
-
-try{
-
-const response = await fetch("https://pathfinder-backend-t2ze.onrender.com/predict",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-answers:{
-R1:8,R2:7,R3:6,
-I1:9,I2:8,I3:7,
-A1:5,A2:6,A3:5,
-S1:4,S2:5,S3:6,
-E1:7,E2:6,E3:7,
-C1:5,C2:6,C3:5
-}
-})
+button.addEventListener("click", function(e){
+    let ripple = document.createElement("span");
+    ripple.style.position = "absolute";
+    ripple.style.width = ripple.style.height = "20px";
+    ripple.style.background = "rgba(255,255,255,0.6)";
+    ripple.style.borderRadius = "50%";
+    ripple.style.transform = "scale(0)";
+    ripple.style.left = e.offsetX + "px";
+    ripple.style.top = e.offsetY + "px";
+    ripple.style.animation = "rippleEffect 0.6s linear";
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
 });
 
-if(!response.ok){
-throw new Error("Server error");
-}
-
-const data = await response.json();
-
-alert(
-"Dominant Trait: " + data.dominant_trait +
-"\nConfidence: " + data.confidence_percentage + "%"
-);
-
-}catch(error){
-
-alert("❌ Failed to connect backend");
-console.error(error);
-
-}
-
-});
-
-}
-
-
-/* -----------------------------
-PARTICLES BACKGROUND
------------------------------ */
-
-if(typeof particlesJS !== "undefined"){
-
+/* ✅ Particles Config */
 particlesJS("particles-js", {
-
-particles: {
-number:{value:100,density:{enable:true,value_area:800}},
-color:{value:"#6366f1"},
-shape:{type:"circle"},
-opacity:{value:0.6},
-size:{value:4,random:true},
-line_linked:{enable:false},
-move:{enable:true,speed:2}
-},
-
-interactivity:{
-events:{
-onhover:{enable:true,mode:"repulse"}
-},
-modes:{
-repulse:{distance:120}
-}
-},
-
-retina_detect:true
-
+  "particles": {
+    "number": { "value": 100, "density": { "enable": true, "value_area": 800 }},
+    "color": { "value": "#6366f1" },
+    "shape": { "type": "circle" },
+    "opacity": {
+      "value": 0.6,
+      "anim": { "enable": true, "speed": 1, "opacity_min": 0.2 }
+    },
+    "size": { "value": 4, "random": true },
+    "line_linked": { "enable": false },
+    "move": { "enable": true, "speed": 2, "out_mode": "out" }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": { "enable": true, "mode": "repulse" },
+      "resize": true
+    },
+    "modes": {
+      "repulse": { "distance": 120, "duration": 0.4 }
+    }
+  },
+  "retina_detect": true
 });
-
-}
 
 });
 </script>
+
+</body>
+</html>
