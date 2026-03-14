@@ -7,7 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- ✅ Particles CDN -->
+<!-- Particles.js -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <style>
@@ -26,7 +26,7 @@ body{
     radial-gradient(circle at 80% 70%, #ede9fe 0%, transparent 40%);
 }
 
-/* ✅ PARTICLES BACKGROUND */
+/* PARTICLES */
 #particles-js{
     position:fixed;
     top:0;
@@ -36,14 +36,12 @@ body{
     z-index:0;
 }
 
-/* Keep content above particles */
 .hero, .section{
     position:relative;
     z-index:1;
 }
 
-/* ---------------- HERO ---------------- */
-
+/* HERO */
 .hero{
     min-height:100vh;
     display:flex;
@@ -52,8 +50,7 @@ body{
     text-align:center;
 }
 
-/* ---------------- NAVBAR ---------------- */
-
+/* NAVBAR */
 .navbar{
     width:100%;
     display:flex;
@@ -64,14 +61,13 @@ body{
 }
 
 .logo img{
-    height:250px;
+    height:200px;
     animation:logoFloat 4s ease-in-out infinite;
-    transition:all 0.4s ease;
     filter:drop-shadow(0 0 20px rgba(79,70,229,0.4));
 }
 
 @keyframes logoFloat{
-    0%,100%{ transform:translateY(0px); }
+    0%,100%{ transform:translateY(0); }
     50%{ transform:translateY(-20px); }
 }
 
@@ -80,15 +76,14 @@ body{
     margin-left:60px;
     color:#374151;
     font-weight:500;
-    font-size:22px;
-    display:inline-block;
+    font-size:20px;
     position:relative;
-    transition:all 0.3s ease;
+    transition:0.3s;
 }
 
 .nav-links a:hover{
     color:#4f46e5;
-    transform:scale(1.15);
+    transform:scale(1.1);
 }
 
 .nav-links a::after{
@@ -99,15 +94,14 @@ body{
     width:0%;
     height:3px;
     background:#4f46e5;
-    transition:width 0.3s ease;
+    transition:0.3s;
 }
 
 .nav-links a:hover::after{
     width:100%;
 }
 
-/* ---------------- HERO CONTENT ---------------- */
-
+/* HERO CONTENT */
 .hero-content{
     padding-top:20px;
     display:flex;
@@ -116,7 +110,7 @@ body{
 }
 
 .hero h1{
-    font-size:3.5rem;
+    font-size:3.2rem;
     font-weight:700;
     max-width:800px;
     line-height:1.2;
@@ -134,7 +128,7 @@ body{
 
 .hero p{
     margin-top:20px;
-    font-size:1.5rem;
+    font-size:1.3rem;
     max-width:600px;
     color:#4b5563;
     animation:fadeUp 1.2s ease forwards;
@@ -143,28 +137,17 @@ body{
 .hero button{
     position:relative;
     margin-top:40px;
-    padding:26px 50px;
+    padding:20px 45px;
     border:none;
     border-radius:50px;
     background:linear-gradient(135deg,#4f46e5,#9333ea);
     color:white;
-    font-size:1.3rem;
+    font-size:1.2rem;
     font-weight:600;
     cursor:pointer;
     overflow:hidden;
-    transition:all 0.3s ease;
+    transition:0.3s;
     box-shadow:0 10px 30px rgba(79,70,229,0.4);
-}
-
-.hero button::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:50px;
-    background:linear-gradient(135deg,#06b6d4,#9333ea);
-    opacity:0;
-    transition:0.4s;
-    z-index:-1;
 }
 
 .hero button:hover{
@@ -172,185 +155,266 @@ body{
     box-shadow:0 20px 50px rgba(147,51,234,0.6);
 }
 
-.hero button:hover::before{
-    opacity:1;
-    filter:blur(20px);
-}
-
-/* ---------------- STUDENTS IMAGE ---------------- */
-
+/* STUDENTS IMAGE */
 .students-img{
     margin-top:60px;
-    animation:fadeUp 2s ease forwards;
 }
 
 .students-img img{
-    width:700px;
+    width:650px;
     max-width:90%;
     animation:floatImage 6s ease-in-out infinite;
 }
 
 @keyframes floatImage{
-    0%,100%{ transform:translateY(0px); }
-    50%{ transform:translateY(-25px); }
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-20px); }
 }
 
-/* ---------------- SECTIONS ---------------- */
-
+/* FEATURES */
 .section{
     padding:120px 8%;
     text-align:center;
 }
 
-.section h2{
-    font-size:3rem;
-    font-weight:200;
+.features-grid{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+}
+
+.feature-card{
+    padding:40px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(20px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 60px rgba(79,70,229,0.2);
+}
+
+.feature-card h3{
+    margin-bottom:15px;
+    font-size:1.4rem;
+    color:#4f46e5;
+}
+
+/* HOW IT WORKS */
+.dark-section{
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    color:white;
+}
+
+.dark-section p{
+    color:#e5e7eb;
+}
+
+.steps{
+    margin-top:60px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+}
+
+.step{
+    max-width:280px;
+}
+
+.step span{
+    display:inline-block;
+    width:60px;
+    height:60px;
+    line-height:60px;
+    border-radius:50%;
+    background:white;
+    color:#4f46e5;
+    font-weight:bold;
     margin-bottom:20px;
 }
 
-.section p{
-    max-width:700px;
-    margin:0 auto;
-    color:#4b5563;
+/* CONTACT */
+.contact-box{
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
 }
 
-/* ---------------- ANIMATIONS ---------------- */
+.contact-box form{
+    width:100%;
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
 
+.contact-box input,
+.contact-box textarea{
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+    font-size:16px;
+}
+
+.contact-box button{
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:#4f46e5;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-box button:hover{
+    background:#9333ea;
+    transform:translateY(-3px);
+}
+
+/* ANIMATIONS */
 @keyframes fadeDown{
-    from{
-        opacity:0;
-        transform:translateY(-40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0; transform:translateY(-40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 @keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 @keyframes rippleEffect{
-    to{
-        transform:scale(15);
-        opacity:0;
-    }
+    to{transform:scale(15); opacity:0;}
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-
+/* RESPONSIVE */
 @media(max-width:768px){
-    .hero h1{ font-size:2.2rem; }
-    .nav-links a{ font-size:16px; margin-left:20px; }
-    .logo img{ height:120px; }
+    .hero h1{font-size:2rem;}
+    .nav-links a{font-size:16px; margin-left:20px;}
+    .logo img{height:120px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ✅ PARTICLES BACKGROUND -->
 <div id="particles-js"></div>
 
 <section class="hero">
 
 <div class="navbar">
-    <div class="logo">
-        <img src="AILOGO.png" alt="Logo">
-    </div>
-    <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">How It Works</a>
-        <a href="#contact">Contact Us</a>
-    </div>
+<div class="logo">
+<img src="AILOGO.png" alt="Logo">
+</div>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#how">How It Works</a>
+<a href="#contact">Contact</a>
+</div>
 </div>
 
 <div class="hero-content">
-    <h1>
-        Discover Your Ideal Career Path with Intelligent AI Guidance
-    </h1>
-<br></br>
-    <p>
-        PathFinder AI evaluates personality, interests, and strengths to guide students toward confident career choices.
-    </p>
-    <br>
+<h1>Discover Your Ideal Career Path with Intelligent AI Guidance</h1>
+<p>PathFinder AI evaluates personality, interests, and strengths to guide students toward confident career choices.</p>
+<button>Start Career Analysis</button>
 
-    <button>Start Career Analysis</button>
-
-    <div class="students-img">
-        <img src="students.png" alt="Students">
-    </div>
+<div class="students-img">
+<img src="students.png" alt="Students">
+</div>
 </div>
 
 </section>
 
 <section class="section" id="features">
 <h2>Powerful Features</h2>
-<p>AI-driven personality assessment, visual analytics, and structured career roadmaps designed to guide students toward meaningful professional growth.</p>
+<div class="features-grid">
+<div class="feature-card">
+<h3>AI Personality Mapping</h3>
+<p>Advanced AI analyzes your strengths and interests to suggest ideal career paths.</p>
+</div>
+<div class="feature-card">
+<h3>Career Roadmaps</h3>
+<p>Structured step-by-step guidance including skills, certifications, and growth plans.</p>
+</div>
+<div class="feature-card">
+<h3>Smart Insights</h3>
+<p>Detailed analytics reports to help you make confident decisions.</p>
+</div>
+</div>
 </section>
 
-<section class="section" id="how">
+<section class="section dark-section" id="how">
 <h2>How It Works</h2>
-<p>Take a scientifically designed assessment. Our AI evaluates your responses and provides tailored career recommendations within minutes.</p>
+<div class="steps">
+<div class="step">
+<span>1</span>
+<h3>Take Assessment</h3>
+<p>Answer scientifically designed personality questions.</p>
+</div>
+<div class="step">
+<span>2</span>
+<h3>AI Analysis</h3>
+<p>Our AI processes your responses intelligently.</p>
+</div>
+<div class="step">
+<span>3</span>
+<h3>Get Career Plan</h3>
+<p>Receive personalized roadmap and career suggestions.</p>
+</div>
+</div>
 </section>
 
 <section class="section" id="contact">
 <h2>Contact Us</h2>
-<p>Have questions or feedback? Reach out to our team and we will assist you promptly.</p>
+<div class="contact-box">
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</div>
 </section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-/* ✅ Ripple Effect */
 const button = document.querySelector(".hero button");
 
 button.addEventListener("click", function(e){
-    let ripple = document.createElement("span");
-    ripple.style.position = "absolute";
-    ripple.style.width = ripple.style.height = "20px";
-    ripple.style.background = "rgba(255,255,255,0.6)";
-    ripple.style.borderRadius = "50%";
-    ripple.style.transform = "scale(0)";
-    ripple.style.left = e.offsetX + "px";
-    ripple.style.top = e.offsetY + "px";
-    ripple.style.animation = "rippleEffect 0.6s linear";
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
+let ripple = document.createElement("span");
+ripple.style.position="absolute";
+ripple.style.width=ripple.style.height="20px";
+ripple.style.background="rgba(255,255,255,0.6)";
+ripple.style.borderRadius="50%";
+ripple.style.transform="scale(0)";
+ripple.style.left=e.offsetX+"px";
+ripple.style.top=e.offsetY+"px";
+ripple.style.animation="rippleEffect 0.6s linear";
+this.appendChild(ripple);
+setTimeout(()=>ripple.remove(),600);
 });
 
-/* ✅ Particles Config */
 particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 100, "density": { "enable": true, "value_area": 800 }},
-    "color": { "value": "#6366f1" },
-    "shape": { "type": "circle" },
-    "opacity": {
-      "value": 0.6,
-      "anim": { "enable": true, "speed": 1, "opacity_min": 0.2 }
-    },
-    "size": { "value": 4, "random": true },
-    "line_linked": { "enable": false },
-    "move": { "enable": true, "speed": 2, "out_mode": "out" }
-  },
-  "interactivity": {
-    "events": {
-      "onhover": { "enable": true, "mode": "repulse" },
-      "resize": true
-    },
-    "modes": {
-      "repulse": { "distance": 120, "duration": 0.4 }
-    }
-  },
-  "retina_detect": true
+particles: {
+number:{value:100,density:{enable:true,value_area:800}},
+color:{value:"#6366f1"},
+shape:{type:"circle"},
+opacity:{value:0.6,anim:{enable:true,speed:1,opacity_min:0.2}},
+size:{value:4,random:true},
+line_linked:{enable:false},
+move:{enable:true,speed:2,out_mode:"out"}
+},
+interactivity:{
+events:{onhover:{enable:true,mode:"repulse"},resize:true},
+modes:{repulse:{distance:120,duration:0.4}}
+},
+retina_detect:true
 });
 
 });
